@@ -509,8 +509,13 @@ function renderPregunta() {
   const p   = preguntasActivas[indiceActual];
   const tot = preguntasActivas.length;
 
-  document.getElementById('q-num').textContent       = `Pregunta ${p.id}`;
-  document.getElementById('q-enunciado').textContent = p.enunciado;
+  document.getElementById('q-num').textContent = `Pregunta ${p.id}`;
+  const numStr = String(p.id).padStart(3,'0');
+  document.getElementById('q-enunciado').innerHTML =
+    `<img src="preguntas_img/q${numStr}.jpg"
+          alt="Pregunta ${p.id}"
+          style="width:100%;border-radius:8px;margin-bottom:4px;"
+          loading="lazy"/>`;
   document.getElementById('q-explicacion').classList.remove('visible');
   document.getElementById('btn-siguiente').classList.remove('visible');
   document.getElementById('qh-progreso').textContent = `Pregunta ${indiceActual+1} de ${tot}`;
